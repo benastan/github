@@ -156,7 +156,7 @@
       // ------
 
       this.createRepo = function(reponame, options, cb) {
-        if (typeof options !== 'object') options = {};
+        if (!options) options = {};
         options.name = reponame;
         _request("POST", "/user/repos", options, function(err, res) {
           cb(err, res);
@@ -192,6 +192,12 @@
         });
       }
 
+      // Edit a repo
+      // -------
+
+      this.edit = function(options, cb) {
+        _request('PATCH', repoPath, options, cb);
+      };
       // Get a particular reference
       // -------
 
