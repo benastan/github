@@ -151,6 +151,17 @@
           cb(err, res);
         });
       };
+
+      // Create repo
+      // ------
+
+      this.createRepo = function(reponame, options, cb) {
+        if (typeof options !== 'object') options = {};
+        options.name = reponame;
+        _request("POST", "/user/repos", options, function(err, res) {
+          cb(err, res);
+        });
+      };
     };
 
 
